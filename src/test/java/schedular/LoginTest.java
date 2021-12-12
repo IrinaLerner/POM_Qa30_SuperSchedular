@@ -1,11 +1,13 @@
 package schedular;
 
 import config.ConfigurationSchedular;
+import config.ListenerTestNG;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import schedulerscreens.LoginScreen;
 import schedulerscreens.SplashScreen;
-
+@Listeners(ListenerTestNG.class)
 public class LoginTest extends ConfigurationSchedular {
     @Test
     public void loginSuccessTest(){
