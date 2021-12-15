@@ -9,16 +9,15 @@ public class WizardScreen extends BaseScreen{
         super(driver);
     }
 
-@FindBy(xpath = "//*[@resourse-id='com.example.svetlana.scheduler:id/wisard_setting_skip_container']")
+    @FindBy (xpath = "//*[@resource-id='com.example.svetlana.scheduler:id/wizard_settings_skip_container']")
     MobileElement skippButton;
 
-    public HomeScreen skipWizart(){
-        if(isDisplayedWithExp(skippButton)){
+    public HomeScreen skipWizard(){
+        if(isDisplayedWithExp(skippButton)) {
             skippButton.click();
         }
         return new HomeScreen(driver);
     }
-
 
 
 }

@@ -1,14 +1,12 @@
 package schedular;
 
-import config.ConfigurationSchedular;
+import config.ConfigurationScheduler;
 import org.testng.annotations.Test;
 
-public class TestMy extends ConfigurationSchedular {
+public class TestMy extends ConfigurationScheduler {
 
     @Test
     public void test(){
 
     }
-
-
 }

@@ -7,8 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.IOException;
 
-public class AppiumListener implements AppiumWebDriverEventListener {
+public class AppiumListener  implements AppiumWebDriverEventListener {
     Logger logger = LoggerFactory.getLogger(AppiumListener.class);
     @Override
     public void beforeChangeValueOf(WebElement element, WebDriver driver) {
@@ -82,13 +83,12 @@ public class AppiumListener implements AppiumWebDriverEventListener {
 
     @Override
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-        logger.info("Start file element -->"+ by);
-
+        logger.info("Start find element -- >" +by);
     }
 
     @Override
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
-        logger.info("Thge element was found -->"+by);
+        logger.info("The element was found -->" +by);
 
     }
 
@@ -134,18 +134,17 @@ public class AppiumListener implements AppiumWebDriverEventListener {
 
     @Override
     public void onException(Throwable throwable, WebDriver driver) {
-        logger.info("You have a problem -->"+throwable.getMessage()+ throwable.getStackTrace().toString());
-        File tmp =((TakesScreenshot)driver).getScreenshootAs(OutputType.FILE);
-        int i= (int)(System.currentTimeMillis()/1000)/3600;
-        File screen = new File(("C:\\Users\\User\\QA30\\POM_Qa30_SuperSchedular\\src\\test\\screenshots/scr"+i+".png"));
-        logger.info("Screen with error in file -->"+screen);
+
+        logger.info("You have a problem -->" +throwable.getMessage()+throwable.getStackTrace().toString());
+        File tmp= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        int i= (int)(System.currentTimeMillis()/1000)%3600;
+        File screen = new File("/Users/tayahatum/Qa30/POM_Qa30_SuperScheduler/src/test/screenshots/scr"+i+".png");
+        logger.info("Screen with error in file --->" +screen);
         try{
             Files.copy(tmp,screen);
-        }catch(Exception e){
-            e.getStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
         }
-
-
     }
 
     @Override

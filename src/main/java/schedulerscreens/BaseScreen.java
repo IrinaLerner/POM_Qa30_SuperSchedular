@@ -8,41 +8,43 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseScreen {
-    AppiumDriver<MobileElement> driver;
+    AppiumDriver <MobileElement> driver;
 
     public BaseScreen(AppiumDriver<MobileElement> driver) {
         this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver),this);
     }
 
-    public void type(MobileElement element, String text) {
-        if (text != null) {
+    public void type(MobileElement element, String text){
+        if(text!= null) {
             element.click();
             element.clear();
             element.sendKeys(text);
         }
-
     }
 
-    public void hideKeyBoard() {
+    public void hideKeyboard(){
         driver.hideKeyboard();
     }
 
-    public boolean isDisplayedWithExp(MobileElement element) {
+    public boolean isDisplayedWithExp(MobileElement element){
         try {
-            element.isDisplayed();
-        } catch (Exception ex) {
+            should(element,10);
+            return element.isDisplayed();
+        }catch (Exception ex){
             return false;
         }
-        return true;
+
     }
+
     public void should(MobileElement element, int timer){
         new WebDriverWait(driver,timer)
                 .until(ExpectedConditions.visibilityOf(element));
-
     }
-    public void shouldHave(MobileElement element, String text, int timer){
+
+    public void shouldHave(MobileElement element, String text,int timer){
         new WebDriverWait(driver,timer)
                 .until(ExpectedConditions.textToBePresentInElement(element,text));
     }
+
 }
