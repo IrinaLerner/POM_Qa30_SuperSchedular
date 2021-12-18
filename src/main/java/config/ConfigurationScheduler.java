@@ -32,7 +32,7 @@ public class ConfigurationScheduler {
         capabilities.setCapability("appActivity", ".presentation.splashScreen.SplashScreenActivity");
 
         capabilities.setCapability("automationName", "Appium");
-        capabilities.setCapability("app","/Users/tayahatum/Tools/apk/v.0.0.3.apk");
+        capabilities.setCapability("app","C:\\Tools/v.0.0.3.apk");
 
         driver = new AppiumDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
         //driver = EventFiringWebDriverFactory.getEventFiringWebDriver(driver,new AppiumListener());

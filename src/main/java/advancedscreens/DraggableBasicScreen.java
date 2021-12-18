@@ -15,7 +15,4 @@ public class DraggableBasicScreen extends BaseScreenADV{
     List<MobileElement > list;
 
 
-    public SwipeableBasicScreen selectSwipeableBasic(){
-
-    }
 }
